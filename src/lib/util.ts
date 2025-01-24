@@ -1,6 +1,6 @@
 import { differenceInYears, format, formatDistance } from "date-fns";
 
-import { FieldValue, Path, UseFormSetError } from "react-hook-form";
+import { FieldValues, Path, UseFormSetError } from "react-hook-form";
 import { ZodIssue } from "zod";
 
 export function calculateAge(dob: Date) {
@@ -11,13 +11,13 @@ export function formatShortDateTime(date: Date) {
   return format(date, "dd MMM yy h:mm:a");
 }
 
-export function handleFormServerError<TFieldVaLues extends FieldValue>(
+export function handleFormServerError<TFieldValues extends FieldValues>(
   errorResponse: { error: string | ZodIssue[] },
-  setError: UseFormSetError<TFieldVaLues>
+  setError: UseFormSetError<TFieldValues>
 ) {
   if (Array.isArray(errorResponse.error)) {
     errorResponse.error.forEach((e) => {
-      const fieldName = e.path.join(".") as Path<TFieldVaLues>;
+      const fieldName = e.path.join(".") as Path<TFieldValues>;
       setError(fieldName, { message: e.message });
     });
   } else {
