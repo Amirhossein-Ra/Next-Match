@@ -1,6 +1,6 @@
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = new Resend("re_123");
 
 export async function sendVerificationEmail(email: string, token: string) {
   const link = `http://localhost:3000/verify-email?token=${token}`;
