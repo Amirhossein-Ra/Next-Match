@@ -80,10 +80,6 @@ export const useMessages = (
     router.push(url + "/chat");
   };
 
-  const rendeCell = useCallback(
-    (item: MessageDto, columnKey: keyof MessageDto) => {},
-    [isOutbox, isDeleting.id, isDeleting.loading, handleDeleteMessage]
-  );
   return {
     isOutbox,
     columns,

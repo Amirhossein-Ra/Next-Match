@@ -34,7 +34,7 @@ export const useFilters = () => {
     if (gender || ageRange || orderBy || withPhoto) {
       setPage(1);
     }
-  }, [gender, ageRange, orderBy, withPhoto]);
+  }, [gender, ageRange, orderBy, withPhoto,setPage]);
 
   useEffect(() => {
     startTransition(() => {
@@ -54,7 +54,7 @@ export const useFilters = () => {
 
       router.replace(`${pathName}?${searchParams}`);
     });
-  }, [ageRange, orderBy, gender, router, pathName, pageNumber, pageSize]);
+  }, [ageRange, orderBy, gender, router, pathName, pageNumber, pageSize,withPhoto]);
 
   const orderByList = [
     { label: "Last Active", value: "updated" },

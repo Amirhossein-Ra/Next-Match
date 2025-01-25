@@ -31,13 +31,12 @@ export default function Providers({
 
   useEffect(() => {
     if (!isUnreadCountSet.current && userId) {
-      getUnreadMessageCount().then((count) => {
-        setUnreadCount(count);
+      getUnreadMessageCount().then(count => {
+        setUnreadCount(count)
       });
+      isUnreadCountSet.current = true;
     }
-
-    isUnreadCountSet.current = true;
-  }, [setUnreadCount]);
+  }, [setUnreadCount, userId])
 
   usePresenceChannel(userId);
   useNotificationChannel(userId);
