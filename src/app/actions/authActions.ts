@@ -24,16 +24,7 @@ export async function signInUser(
       return { status: "error", error: "Invalid credentials" };
     }
 
-    if (!existingUser.emailVerified) {
-      const token = await generateToken(
-        existingUser.email,
-        TokenType.VERIFACTION
-      );
 
-      await sendVerificationEmail(token.email, token.token);
-
-      return { status: "error", error: "please verify your email" };
-    }
 
     const result = await signIn("credentials", {
       email: data.email,
